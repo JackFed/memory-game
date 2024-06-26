@@ -1,17 +1,20 @@
-import { useState } from 'react'
 import './styles/App.css'
 import TileList from './components/TileList'
+import Score from './components/Score'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   // TODO: get tile icons from external api
-
+  
 
 
   return (
     <>
-      <TileList totalTiles={4}/>
+      <h1>Select as many different cards as possible!</h1>
+      <div className="game">
+        <Score count={0} />
+        <TileList totalTiles={8}/>
+      </div>
     </>
   )
 }

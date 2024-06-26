@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Tile from './Tile';
+import ViteIcon from '../../public/vite.svg'
 
 function TileList({ totalTiles }) {
 
@@ -10,7 +11,7 @@ function TileList({ totalTiles }) {
             <div className="tiles">
                 {
                     Array.from({ length: totalTiles }).map((_, index) => (
-                        <Tile key={index} icon={"#"} />
+                        <Tile key={index} icon={ViteIcon} />
                     ))
                 }
             </div>
