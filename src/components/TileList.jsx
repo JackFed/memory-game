@@ -4,6 +4,7 @@ import ViteIcon from '../../public/vite.svg'
 
 function TileList({ totalTiles }) {
 
+    const [imageUrl, setImageUrl] = useState([]);
     // TODO: get tile icon from external api
 
     return (

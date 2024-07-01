@@ -1,6 +1,7 @@
 import './styles/App.css'
 import TileList from './components/TileList'
 import Score from './components/Score'
+import PokemonList from './components/PokemonList'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
       <div className="game">
         <Score count={0} />
         <TileList totalTiles={8}/>
+        <PokemonList /> 
       </div>
     </>
   )
