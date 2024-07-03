@@ -16,12 +16,3 @@ export function shuffle(arr) {
     }
     return array;
 }
-
-// Check if the id clicked is unique
-function checkRepeats( id, seenIdList ) {
-    if (id in seenIdList) {
-        return false
-    } else {
-        return true;
-    }
-}

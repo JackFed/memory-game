@@ -6,15 +6,20 @@ import { useState } from 'react';
 function App() {
 
   const [count, setCount] = useState(0);
-
+  const [gameOver, setGameOver] = useState(false);
 
   return (
     <>
-      <h1>Select as many different cards as possible!</h1>
-      <div className="game">
-        <Score count={count} />
-        <PokemonList setCount={setCount} /> 
-      </div>
+      {gameOver && count === 0 && (<div>Game over!</div>)}
+      {! gameOver && (
+        <>
+          <h1>Select as many different cards as possible!</h1>
+          <div className="game">
+            <Score count={count} />
+            <PokemonList setCount={setCount} setGameOver={setGameOver}/> 
+          </div>
+        </>
+      )}
     </>
   )
 }

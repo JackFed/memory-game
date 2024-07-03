@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { shuffle } from "../game-logic/game";
 import PropTypes from "prop-types";
 
-const PokemonList = ({ setCount }) => {
+const PokemonList = ({ setCount, setGameOver }) => {
   const { pokemonList, error, loading } = useImageUrls();
   const [orderedList, setOrderedList] = useState([]);
   const [seenIds, setSeenIds] = useState([]);
@@ -18,6 +18,7 @@ const PokemonList = ({ setCount }) => {
     if (seenIds.includes(id)) {
         setSeenIds([]);
         setCount(0);
+        setGameOver(true);
     } else {
         setSeenIds((prevIds) => [...prevIds, id]);
         setCount(prevCount => prevCount + 1);
