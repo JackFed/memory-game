@@ -44,7 +44,7 @@ const useImageUrls = (LIMIT) => {
         }
 
         fetchRandomPokeList(LIMIT);
-    }, []);
+    }, [LIMIT]);
 
     return { pokemonList, error, loading };
 }
