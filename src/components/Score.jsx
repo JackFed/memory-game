@@ -3,7 +3,7 @@ function Score({ count }) {
 
     return (
         <div className="scoreCount">
-            Score: {count}
+            <h1>Score: {count}</h1>
         </div>
     )   
 }

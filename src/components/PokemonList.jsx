@@ -1,6 +1,7 @@
 import useImageUrls from "../hooks/useImageUrls";
 import { useState, useEffect } from "react";
 import { shuffle } from "../game-logic/game";
+import "../styles/PokemonList.css";
 import PropTypes from "prop-types";
 
 const PokemonList = ({ maxScore, score, setScore, setGameOver }) => {
@@ -23,7 +24,6 @@ const PokemonList = ({ maxScore, score, setScore, setGameOver }) => {
   const handlePokeClick = (id) => {
     if (seenIds.includes(id)) {
         setSeenIds([]);
-        setScore(0);
         setGameOver(true);
     } else {
         setSeenIds((prevIds) => [...prevIds, id]);
@@ -40,7 +40,6 @@ const PokemonList = ({ maxScore, score, setScore, setGameOver }) => {
       {orderedList.map((pokemon) => (
         <button key={pokemon.id} className="tile" onClick={() => handlePokeClick(pokemon.id)}>
           <img src={pokemon.spriteUrl} alt={pokemon.name} />
-          <h1>{pokemon.name}</h1>
         </button>
       ))}
     </div>

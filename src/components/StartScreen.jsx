@@ -10,11 +10,11 @@ const StartScreen = ({ maxScore, score, setScore, setGameOver }) => {
     return (
         <>
             {score === maxScore 
-            ? (<div>YOU Win!</div>)
+            ? (<h1>YOU WIN!</h1>)
             : (
                 <div className="loss">
-                    <div>YOU LOSE!</div>
-                    <div>Final Score: {score}</div>
+                    <h1>YOU LOSE!</h1>
+                    <h1>Final Score: {score}</h1>
                 </div>
             )}
             <button onClick={handleRestart}>Play Again</button>
@@ -23,6 +23,7 @@ const StartScreen = ({ maxScore, score, setScore, setGameOver }) => {
 }
 
 StartScreen.propTypes = {
+    maxScore: PropTypes.number.isRequired,
     score: PropTypes.number.isRequired,
     setScore: PropTypes.func.isRequired,
     setGameOver: PropTypes.func.isRequired
