@@ -1,4 +1,4 @@
-
+import PropTypes from "prop-types";
 function Score({ count }) {
 
     return (
@@ -7,5 +7,9 @@ function Score({ count }) {
         </div>
     )   
 }
+
+Score.propTypes = {
+    count: PropTypes.number.isRequired
+  }
 
 export default Score;

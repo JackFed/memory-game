@@ -1,6 +1,7 @@
 import useImageUrls from "../hooks/useImageUrls";
 import { useState, useEffect } from "react";
 import { shuffle } from "../game-logic/game";
+import PropTypes from "prop-types";
 
 const PokemonList = ({ setCount }) => {
   const { pokemonList, error, loading } = useImageUrls();
@@ -14,7 +15,6 @@ const PokemonList = ({ setCount }) => {
   }, [pokemonList]);
 
   const handlePokeClick = (id) => {
-    console.log(id);
     if (seenIds.includes(id)) {
         setSeenIds([]);
         setCount(0);
@@ -23,8 +23,6 @@ const PokemonList = ({ setCount }) => {
         setCount(prevCount => prevCount + 1);
     }
     setOrderedList(shuffle([...orderedList]));
-    
-    console.log(seenIds)
   }
 
   if (loading) return <p>Loading...</p>;
@@ -41,5 +39,9 @@ const PokemonList = ({ setCount }) => {
     </div>
   );
 };
+
+PokemonList.propTypes = {
+  setCount: PropTypes.func.isRequired
+}
 
 export default PokemonList;
