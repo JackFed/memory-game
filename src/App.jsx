@@ -1,5 +1,4 @@
 import './styles/App.css'
-import TileList from './components/TileList'
 import Score from './components/Score'
 import PokemonList from './components/PokemonList'
 

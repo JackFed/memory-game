@@ -1,27 +1,11 @@
 import useImageUrls from "../hooks/useImageUrls";
 import { useState, useEffect } from "react";
-
-const shuffle = (arr) => {
-  let array = [...arr];
-  let currentIndex = array.length;
-
-  // While there remain elements to shuffle...
-  while (currentIndex != 0) {
-
-    // Pick a remaining element...
-    let randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex--;
-
-    // And swap it with the current element.
-    [array[currentIndex], array[randomIndex]] = [
-      array[randomIndex], array[currentIndex]];
-  }
-  return array;
-}
+import { shuffle } from "../game-logic/game";
 
 const PokemonList = () => {
   const { pokemonList, error, loading } = useImageUrls();
   const [orderedList, setOrderedList] = useState([]);
+  const [seenIds, setSeenIds] = useState([]);
 
   useEffect(() => {
     if (pokemonList) {
@@ -29,10 +13,16 @@ const PokemonList = () => {
     }
   }, [pokemonList]);
 
-  const handlePokeClick = () => {
-    console.log()
-    console.log(pokemonList);
-    setOrderedList((prevList) => shuffle(prevList));
+  const handlePokeClick = (id) => {
+    console.log(id);
+    if (seenIds.includes(id)) {
+        setSeenIds([]);
+    } else {
+        setSeenIds((prevIds) => [...prevIds, id]);
+    }
+    setOrderedList(shuffle([...orderedList]));
+    
+    console.log(seenIds)
   }
 
   if (loading) return <p>Loading...</p>;
@@ -41,7 +31,7 @@ const PokemonList = () => {
   return (
     <div className="tiles">
       {orderedList.map((pokemon) => (
-        <button key={pokemon.id} className="tile" onClick={handlePokeClick}>
+        <button key={pokemon.id} className="tile" onClick={() => handlePokeClick(pokemon.id)}>
           <img src={pokemon.spriteUrl} alt={pokemon.name} />
           <h1>{pokemon.name}</h1>
         </button>
