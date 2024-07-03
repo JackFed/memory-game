@@ -10,7 +10,7 @@ const useImageUrls = () => {
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const LIMIT = 8;
+    const LIMIT = 12;
     const TOTAL_POKEMON = 1000;
 
     useEffect(() => {

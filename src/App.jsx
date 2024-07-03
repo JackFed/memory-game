@@ -14,7 +14,6 @@ function App() {
       <h1>Select as many different cards as possible!</h1>
       <div className="game">
         <Score count={0} />
-        <TileList totalTiles={8}/>
         <PokemonList /> 
       </div>
     </>
