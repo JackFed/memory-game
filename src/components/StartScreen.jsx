@@ -1,6 +1,6 @@
 import PropTypes from "prop-types"
 
-const StartScreen = ({ score, setScore, setGameOver }) => {
+const StartScreen = ({ maxScore, score, setScore, setGameOver }) => {
 
     const handleRestart = () => {
         setScore(0);
@@ -9,9 +9,14 @@ const StartScreen = ({ score, setScore, setGameOver }) => {
 
     return (
         <>
-            {score === 3 
+            {score === maxScore 
             ? (<div>YOU Win!</div>)
-            : (<div>YOU LOSE!</div>)}
+            : (
+                <div className="loss">
+                    <div>YOU LOSE!</div>
+                    <div>Final Score: {score}</div>
+                </div>
+            )}
             <button onClick={handleRestart}>Play Again</button>
         </>
     )
