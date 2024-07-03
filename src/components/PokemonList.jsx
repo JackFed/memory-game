@@ -5,7 +5,7 @@ import "../styles/PokemonList.css";
 import PropTypes from "prop-types";
 
 const PokemonList = ({ maxScore, score, setScore, setGameOver }) => {
-  const { pokemonList, error, loading } = useImageUrls();
+  const { pokemonList, error, loading } = useImageUrls(maxScore);
   const [orderedList, setOrderedList] = useState([]);
   const [seenIds, setSeenIds] = useState([]);
 

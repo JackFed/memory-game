@@ -5,12 +5,11 @@ import { useState, useEffect } from "react";
 // Set limit and randomize offset so you can get x amount of pokemon 
 // starting from y location in the pokedex.
 
-const useImageUrls = () => {
+const useImageUrls = (LIMIT) => {
     const [pokemonList, setPokemonList] = useState([]);
     const [error, setError] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const LIMIT = 12;
     const TOTAL_POKEMON = 1000;
 
     useEffect(() => {
