@@ -1,19 +1,19 @@
 import './styles/App.css'
 import Score from './components/Score'
 import PokemonList from './components/PokemonList'
+import { useState } from 'react';
 
 function App() {
 
-  // TODO: get tile icons from external api
-  
+  const [count, setCount] = useState(0);
 
 
   return (
     <>
       <h1>Select as many different cards as possible!</h1>
       <div className="game">
-        <Score count={0} />
-        <PokemonList /> 
+        <Score count={count} />
+        <PokemonList setCount={setCount} /> 
       </div>
     </>
   )

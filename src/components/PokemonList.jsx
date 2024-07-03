@@ -2,7 +2,7 @@ import useImageUrls from "../hooks/useImageUrls";
 import { useState, useEffect } from "react";
 import { shuffle } from "../game-logic/game";
 
-const PokemonList = () => {
+const PokemonList = ({ setCount }) => {
   const { pokemonList, error, loading } = useImageUrls();
   const [orderedList, setOrderedList] = useState([]);
   const [seenIds, setSeenIds] = useState([]);
@@ -17,8 +17,10 @@ const PokemonList = () => {
     console.log(id);
     if (seenIds.includes(id)) {
         setSeenIds([]);
+        setCount(0);
     } else {
         setSeenIds((prevIds) => [...prevIds, id]);
+        setCount(prevCount => prevCount + 1);
     }
     setOrderedList(shuffle([...orderedList]));
     
