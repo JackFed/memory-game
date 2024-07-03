@@ -1,6 +1,12 @@
 
 .tiles {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
     gap: 20px;
+}
+
+
+.tile img {
+    width: 80%;
+    height: 80%;
 }
