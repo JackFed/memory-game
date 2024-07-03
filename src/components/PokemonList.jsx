@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import { shuffle } from "../game-logic/game";
 import PropTypes from "prop-types";
 
-const PokemonList = ({ setCount, setGameOver }) => {
+const LIMIT = 3;
+
+const PokemonList = ({ score, setScore, setGameOver }) => {
   const { pokemonList, error, loading } = useImageUrls();
   const [orderedList, setOrderedList] = useState([]);
   const [seenIds, setSeenIds] = useState([]);
@@ -17,11 +19,12 @@ const PokemonList = ({ setCount, setGameOver }) => {
   const handlePokeClick = (id) => {
     if (seenIds.includes(id)) {
         setSeenIds([]);
-        setCount(0);
+        setScore(0);
         setGameOver(true);
     } else {
         setSeenIds((prevIds) => [...prevIds, id]);
-        setCount(prevCount => prevCount + 1);
+        setScore(prevCount => prevCount + 1);
+        if (score === LIMIT) setGameOver(true); // Count not updated right away
     }
     setOrderedList(shuffle([...orderedList]));
   }
@@ -42,7 +45,9 @@ const PokemonList = ({ setCount, setGameOver }) => {
 };
 
 PokemonList.propTypes = {
-  setCount: PropTypes.func.isRequired
+  score: PropTypes.number.isRequired,
+  setScore: PropTypes.func.isRequired,
+  setGameOver: PropTypes.func.isRequired
 }
 
 export default PokemonList;
